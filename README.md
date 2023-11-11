@@ -14,6 +14,10 @@ Alternativet är att starta den via docker. Då startar du den med ```docker-com
 
 I båda fallen kommer du åt servern på ```localhost:1338/<route>```
 
+För att kunna använda routen ```/login``` krävs en .env-fil med variabeln JWT_SECRET.
+
+Tips: generera din hemliga nyckel (32 tecken) i terminalen med kommandot ```openssl rand -base64 32```
+
 ## Routes
 
 För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gäller framförallt routes som inte är GET-routes.
