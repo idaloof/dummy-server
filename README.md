@@ -63,3 +63,13 @@ Request-objektet måste innehålla ett bike-objekt med nycklarna:
 * city_id
 * status_id
 * geometry (array med lat och long)
+
+Hyr en cykel (ej klar):
+```
+POST /bikes/:id/rent
+```
+
+När rent-routen anropas ska följande hända
+* Cykelns status ska ändras
+* En trip skapas (user_id, bike_id, starttid, startposition)
+* När skickar vi in värden för cost-attributen?
