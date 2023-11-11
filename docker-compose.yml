@@ -1,0 +1,14 @@
+version: "3"
+services:
+    server:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: "dummy-server"
+        volumes:
+            - ./data:/server/data
+            - ./routes:/server/routes
+            - ./models:/server/models
+        ports:
+            - "1338:1338"
+        restart: "always"

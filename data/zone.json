@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "descr": "parking"
+    },
+    {
+        "id": "2",
+        "descr": "forbidden"
+    },
+    {
+        "id": "3",
+        "descr": "charge"
+    }
+]

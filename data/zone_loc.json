@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "zone_id": "2",
+        "city_id": "1",
+        "date_from": "2023-11-11",
+        "geometry": "syylBmmkiJaQpTur@pKGmDtU}VpLmFv`@tA"
+    },
+    {
+        "id": "2",
+        "zone_id": "2",
+        "city_id": "1",
+        "date_from": "2023-11-11",
+        "geometry": "c_hmBypaiJmAdA{Ct@sG]kFv@sB`AuF`@wCsEk@_B}AsG`@sCbPiMrZxGtGbD_EhBbChE}GxD"
+    },
+    {
+        "id": "3",
+        "zone_id": "2",
+        "city_id": "1",
+        "date_from": "2023-11-11",
+        "geometry": "goemBgdjiJ~GpCmFzJmJxOqi@|DpDcNi@{GqSwMvcAM"
+    },
+    {
+        "id": "4",
+        "zone_id": "2",
+        "city_id": "1",
+        "date_from": "2023-11-11",
+        "geometry": "kn_mBoekiJpXfY{DpUuW|Eb~@rJ|@ln@qfAdTkZqSwb@iDuf@fR_bAqVxSqJ{`@}KdvAieAmc@sGzQyWr[pOzm@gStmAeS~i@fMcUzPgQiBa_@nP"
+    }
+]

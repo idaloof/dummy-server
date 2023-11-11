@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "descr": "stopped"
+    },
+    {
+        "id": "2",
+        "descr": "moving"
+    },
+    {
+        "id": "3",
+        "descr": "maintenance"
+    }
+]
