@@ -60,7 +60,7 @@ GET /bikes/:id
 ```
 ________________________________________________________________
 
-Uppdatera en cykel (ej klar):
+Uppdatera en cykel:
 ```
 PUT /bikes/:id
 ```
