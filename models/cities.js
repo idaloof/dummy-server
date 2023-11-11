@@ -56,7 +56,7 @@ const city = {
     insertCity: async function insertCity(req, res, next) {
         let city = req.body
 
-        const cityId = city.id
+        const cityId = data.length + 1
         const cityName = city.name
         const cityCoords = city.coords
 

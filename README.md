@@ -86,8 +86,31 @@ POST /bikes/:id/return
 
 När return-routen anropas ska följande hända:
 * Cykelns status ska ändras
-* En resa ska uppdateras (sluttid, slutposition)
+* En trip uppdateras (sluttid, slutposition)
 * När skickar vi in värden för cost-attributen?
 * Kundens saldo ändras
+
+________________________________________________________________
+
+### City-routes
+
+Hämta alla städer:
+```
+GET /cities
+```
+________________________________________________________________
+
+Hämta en stad:
+```
+GET /cities/:id
+```
+________________________________________________________________
+
+Lägg till en stad:
+```
+POST /cities
+```
+
+
 
 ________________________________________________________________
