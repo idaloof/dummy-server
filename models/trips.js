@@ -3,6 +3,7 @@
  */
 
 const data = require('../data/trip.json')
+const helpers = require('./helpers.js')
 
 const trip = {
     /**
@@ -45,7 +46,7 @@ const trip = {
     /**
      * @description Function that inserts a new trip
      *
-     * @param {Request} req Request object
+     * @param {Object} data New trip data
      * @param {Response} res Response object
      * @param {Function} next Next function
      *
@@ -65,11 +66,9 @@ const trip = {
             park_cost: ""
         }
 
-        filePath = './data/trip.json'
+        const filePath = './data/trip.json'
 
-        helpers.addToJsonFile(filePath, trip, next)
-
-        return res.status(201).json(trip)
+        await helpers.addToJsonFile(filePath, trip, next)
     }
 }
 

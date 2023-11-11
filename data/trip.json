@@ -1,1 +1,17 @@
-[]
+[
+    {
+        "id": null,
+        "bike_id": "1",
+        "user_id": "1",
+        "start_time": "2023-11-11 20:02:13",
+        "end_time": "",
+        "start_pos": {
+            "lat": "59.34495856826468",
+            "long": "18.055857823925237"
+        },
+        "end_pos": "",
+        "start_cost": "",
+        "var_cost": "",
+        "park_cost": ""
+    }
+]

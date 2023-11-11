@@ -76,10 +76,11 @@ const bike = {
      * @returns {void}
      */
     rentBike: function rentBike(rent, res, next) {
-        const bike = this.getOneBike(rent.bikeId, res, next)
+        const index = data.findIndex(item => item.id === rent.bikeId);
+        const bike = data[index]
         const filePath = './data/bike.json'
 
-        bike.statusId = "2"
+        bike.status_id = "2"
         helpers.addToJsonFile(filePath, bike, next, rent.bikeId)
 
         // kanske bör tripsmodellen anropas direkt i routen
