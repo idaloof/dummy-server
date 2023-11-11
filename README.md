@@ -24,7 +24,10 @@ Skapa ny admin-användare med:
 ```
 POST /register
 ```
-Request-objektet måste innehålla email och lösenord.
+Request-objektet måste innehålla ett objekt med nycklarna:
+
+* email
+* password
 
 ________________________________________________________________
 
@@ -32,7 +35,10 @@ Logga in med admin-användare och få tillbaka token:
 ```
 POST /login
 ```
-Request-objektet måste innehålla email och lösenord.
+Request-objektet måste innehålla ett objekt med nycklarna:
+
+* email
+* password
 
 ________________________________________________________________
 
@@ -52,7 +58,7 @@ Uppdatera en cykel:
 ```
 PUT /bikes/:id
 ```
-Request-objektet måste innehålla ett bike-objekt med:
+Request-objektet måste innehålla ett bike-objekt med nycklarna:
 
 * city_id
 * status_id
