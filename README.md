@@ -20,8 +20,14 @@ För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gä
 
 ### Auth-routes
 
-Skapa ny admin-användare:
+Skapa ny admin-användare med:
 ```
 POST /register
-
 ```
+Request-objektet måste innehålla email och lösenord.
+
+Logga in med admin-användare och få tillbaka token:
+```
+POST /login
+```
+Request-objektet måste innehålla email och lösenord.
