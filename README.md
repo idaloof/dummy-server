@@ -146,7 +146,7 @@ GET /users/:id
 ```
 ________________________________________________________________
 
-Uppdatera en användare (ej klar):
+Uppdatera en användare:
 ```
 PUT /users/:id
 ```
