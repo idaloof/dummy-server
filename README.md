@@ -33,3 +33,27 @@ Logga in med admin-användare och få tillbaka token:
 POST /login
 ```
 Request-objektet måste innehålla email och lösenord.
+
+________________________________________________________________
+
+### Bike-routes
+
+Hämta alla cyklar:
+```
+GET /bikes
+```
+
+Hämta en cykel:
+```
+GET /bikes/:id
+```
+
+Uppdatera en cykel:
+```
+PUT /bikes/:id
+```
+Request-objektet måste innehålla ett bike-objekt med:
+
+* city_id
+* status_id
+* geometry (array med lat och long)
