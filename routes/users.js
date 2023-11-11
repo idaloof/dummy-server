@@ -35,7 +35,7 @@ router.get('/users', (req, res, next) => {
 router.get('/users/:id', (req, res, next) => {
     const userId = req.params.id
 
-    bikesModel.getOneUser(userId ,res, next)
+    usersModel.getOneUser(userId ,res, next)
 });
 
 /**
@@ -53,7 +53,7 @@ router.put('/users/:id', (req, res, next) => {
         data: req.body
     }
 
-    bikesModel.updateUser(user ,res, next)
+    usersModel.updateUser(user ,res, next)
 });
 
 module.exports = router
