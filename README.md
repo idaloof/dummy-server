@@ -16,7 +16,14 @@ I båda fallen kommer du åt servern på ```localhost:1338/<route>```
 
 ## Routes
 
-### Auth
+För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gäller framförallt routes som inte är GET-routes.
+
+### Auth-routes
 ```
-/register
+POST /register
+
+Med denna route skapar du en adminanvändare:
+
+* Ange en email-adress och ett lösenord.
+* Ange application/json som Content-Type
 ```
