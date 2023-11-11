@@ -82,6 +82,7 @@ const bike = {
         bike.statusId = "2"
         helpers.addToJsonFile(filePath, bike, next, rent.bikeId)
 
+        // kanske bör tripsmodellen anropas direkt i routen
         const trip = {
             bikeId: rent.bikeId,
             userId: rent.userId,
