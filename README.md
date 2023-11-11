@@ -71,15 +71,14 @@ Request-bodyn måste innehålla ett objekt med nycklarna:
 * coords (array med lat och long)
 ________________________________________________________________
 
-Hyr en cykel (ej klar):
+Hyr en cykel:
 ```
 POST /bikes/:id/rent
 ```
 
-När rent-routen anropas ska följande hända
-* Cykelns status ska ändras
-* En trip skapas (user_id, bike_id, starttid, startposition)
-* När skickar vi in värden för cost-attributen?
+Request-bodyn måste innehålla ett objekt med nyckeln:
+
+* userId
 
 ________________________________________________________________
 
@@ -183,6 +182,6 @@ POST /zones
 
 Request-bodyn måste innehålla ett objekt med nycklarna:
 
-* zone_id
-* city_id
+* zoneTypeId
+* cityId
 * coords (array med arrayer innehållandes lat och long)
