@@ -24,7 +24,7 @@ Skapa ny admin-användare med:
 ```
 POST /register
 ```
-Request-objektet måste innehålla ett objekt med nycklarna:
+Request-bodyn måste innehålla ett objekt med nycklarna:
 
 * email
 * password
@@ -35,7 +35,7 @@ Logga in med admin-användare och få tillbaka token:
 ```
 POST /login
 ```
-Request-objektet måste innehålla ett objekt med nycklarna:
+Request-bodyn måste innehålla ett objekt med nycklarna:
 
 * email
 * password
@@ -60,7 +60,7 @@ Uppdatera en cykel (ej klar):
 ```
 PUT /bikes/:id
 ```
-Request-objektet måste innehålla ett objekt med nycklarna:
+Request-bodyn måste innehålla ett objekt med nycklarna:
 
 * city_id
 * status_id
@@ -111,7 +111,7 @@ Lägg till en stad (tillfällig route):
 POST /cities
 ```
 
-Request-objektet måste innehålla ett objekt med nycklarna:
+Request-bodyn måste innehålla ett objekt med nycklarna:
 
 * name
 * coords (array med arrayer innehållandes lat och long)
@@ -150,7 +150,7 @@ Uppdatera en användare (ej klar):
 ```
 PUT /users/:id
 ```
-Request-objektet måste innehålla ett objekt med nycklarna:
+Request-bodyn måste innehålla ett objekt med nycklarna:
 
 * email
 * cardnr
@@ -177,7 +177,7 @@ Lägg till en zon (tillfällig route):
 POST /zones
 ```
 
-Request-objektet måste innehålla ett objekt med nycklarna:
+Request-bodyn måste innehålla ett objekt med nycklarna:
 
 * zone_id
 * city_id
