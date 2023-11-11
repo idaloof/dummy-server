@@ -157,3 +157,28 @@ Request-objektet måste innehålla ett objekt med nycklarna:
 * balance
 * active
 ________________________________________________________________
+
+### Zone-routes
+
+Hämta alla zoner:
+```
+GET /zones
+```
+________________________________________________________________
+
+Hämta en zon:
+```
+GET /zones/:id
+```
+________________________________________________________________
+
+Lägg till en zon (tillfällig route):
+```
+POST /zones
+```
+
+Request-objektet måste innehålla ett objekt med nycklarna:
+
+* zone_id
+* city_id
+* coords (array med arrayer innehållandes lat och long)
