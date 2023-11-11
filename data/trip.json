@@ -9,10 +9,6 @@
         "end_pos": "",
         "start_cost": "",
         "var_cost": "",
-        "park_cost": "",
-        "geometry": {
-            "lat": "",
-            "long": ""
-        }
+        "park_cost": ""
     }
 ]

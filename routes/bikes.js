@@ -69,12 +69,14 @@ router.post('/bikes/:id/rent', async (req, res, next) => {
     /**
      * När rent-routen anropas ska följande hända:
      * Cykelns status ska ändras
-     * Användarens active-attribut ska ändras
      * En resa ska skapas (user_id, bike_id, starttid, startposition)
      * Returnera/spara trip_id?
      */
     const rent = {
-        bikeId: req.params.id
+        userId: req.body.userId,
+        bikeId: req.params.id,
+        startTime: req.body.startTime,
+        startPosition: req.body.startPosition
     }
 
     const result = await bikesModel.rentBike(rent, res, next)
