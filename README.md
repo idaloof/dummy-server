@@ -20,10 +20,25 @@ För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gä
 
 ### Auth-routes
 ```
-POST /register
+|      Column 1      |      Column 2      |      Column 3      |      Column 4      |
+|--------------------|--------------------|--------------------|--------------------|
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
+|                    |                    |                    |                    |
 
-Med denna route skapar du en adminanvändare:
-
-* Ange en email-adress och ett lösenord.
-* Ange application/json som Content-Type
 ```
