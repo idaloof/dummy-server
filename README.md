@@ -16,6 +16,7 @@ I båda fallen kommer du åt servern på ```localhost:1338/<route>```
 
 ## Routes
 
+### Auth
 ```
 /register
 ```
