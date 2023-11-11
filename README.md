@@ -48,11 +48,13 @@ Hämta alla cyklar:
 ```
 GET /bikes
 ```
+________________________________________________________________
 
 Hämta en cykel:
 ```
 GET /bikes/:id
 ```
+________________________________________________________________
 
 Uppdatera en cykel (ej klar):
 ```
@@ -63,6 +65,7 @@ Request-objektet måste innehålla ett bike-objekt med nycklarna:
 * city_id
 * status_id
 * geometry (array med lat och long)
+________________________________________________________________
 
 Hyr en cykel (ej klar):
 ```
@@ -73,3 +76,18 @@ När rent-routen anropas ska följande hända
 * Cykelns status ska ändras
 * En trip skapas (user_id, bike_id, starttid, startposition)
 * När skickar vi in värden för cost-attributen?
+
+________________________________________________________________
+
+Avsluta cykeltur (ej klar):
+```
+POST /bikes/:id/return
+```
+
+När return-routen anropas ska följande hända:
+* Cykelns status ska ändras
+* En resa ska uppdateras (sluttid, slutposition)
+* När skickar vi in värden för cost-attributen?
+* Kundens saldo ändras
+
+________________________________________________________________
