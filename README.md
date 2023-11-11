@@ -60,7 +60,7 @@ Uppdatera en cykel (ej klar):
 ```
 PUT /bikes/:id
 ```
-Request-objektet måste innehålla ett bike-objekt med nycklarna:
+Request-objektet måste innehålla ett objekt med nycklarna:
 
 * city_id
 * status_id
@@ -111,9 +111,23 @@ Lägg till en stad (tillfällig route):
 POST /cities
 ```
 
-Request-objektet måste innehålla ett bike-objekt med nycklarna:
+Request-objektet måste innehålla ett objekt med nycklarna:
 
 * name
 * coords (array med arrayer innehållandes lat och long)
 
+________________________________________________________________
+
+### Trip-routes
+
+Hämta alla resor:
+```
+GET /trips
+```
+________________________________________________________________
+
+Hämta en resa:
+```
+GET /trips/:id
+```
 ________________________________________________________________
