@@ -54,7 +54,7 @@ Hämta en cykel:
 GET /bikes/:id
 ```
 
-Uppdatera en cykel:
+Uppdatera en cykel (ej klar):
 ```
 PUT /bikes/:id
 ```
