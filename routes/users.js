@@ -53,7 +53,7 @@ router.put('/users/:id', (req, res, next) => {
         data: req.body
     }
 
-    bikesModel.getOneUser(user ,res, next)
+    bikesModel.updateUser(user ,res, next)
 });
 
 module.exports = router

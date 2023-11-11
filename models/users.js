@@ -2,6 +2,7 @@
  * @description User model handling user requests
  */
 
+const helpers = require('./helpers.js');
 const data = require('../data/user.json')
 
 const user = {
@@ -41,6 +42,21 @@ const user = {
         } catch (parseErr) {
             next(parseErr)
         }
+    },
+    /**
+     * @description Function that updates a user
+     *
+     * @param {Object} user User object
+     * @param {Response} res Response object
+     * @param {Function} next Next function
+     *
+     * @returns {Object} User object
+     */
+    updateUser: function updateUser(user, res, next) {
+        const filePath = './data/user.json'
+        const userInfo = user.data
+
+        helpers.addToJsonFile(filePath, userInfo, next, user.id)
     }
 }
 

@@ -131,3 +131,29 @@ Hämta en resa:
 GET /trips/:id
 ```
 ________________________________________________________________
+
+### User-routes
+
+Hämta alla användare:
+```
+GET /users
+```
+________________________________________________________________
+
+Hämta en användare:
+```
+GET /users/:id
+```
+________________________________________________________________
+
+Uppdatera en användare (ej klar):
+```
+PUT /users/:id
+```
+Request-objektet måste innehålla ett objekt med nycklarna:
+
+* email
+* cardnr
+* balance
+* active
+________________________________________________________________
