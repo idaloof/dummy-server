@@ -18,7 +18,7 @@ I båda fallen kommer du åt servern på ```localhost:1338/<route>```
 
 För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gäller framförallt routes som inte är GET-routes.
 
-### Auth-routes
+### Auth-routes (i princip direkt från jsramverk, credit: Julia Lind)
 
 Skapa ny admin-användare med:
 ```
