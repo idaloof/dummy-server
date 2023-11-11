@@ -64,7 +64,7 @@ Request-objektet måste innehålla ett bike-objekt med nycklarna:
 
 * city_id
 * status_id
-* geometry (array med lat och long)
+* coords (array med lat och long)
 ________________________________________________________________
 
 Hyr en cykel (ej klar):
@@ -106,11 +106,14 @@ GET /cities/:id
 ```
 ________________________________________________________________
 
-Lägg till en stad:
+Lägg till en stad (tillfällig route):
 ```
 POST /cities
 ```
 
+Request-objektet måste innehålla ett bike-objekt med nycklarna:
 
+* name
+* coords (array med arrayer innehållandes lat och long)
 
 ________________________________________________________________
