@@ -41,6 +41,35 @@ const trip = {
         } catch (parseErr) {
             next(parseErr)
         }
+    },
+    /**
+     * @description Function that inserts a new trip
+     *
+     * @param {Request} req Request object
+     * @param {Response} res Response object
+     * @param {Function} next Next function
+     *
+     * @returns {void}
+     */
+    insertTrip: async function insertTrip(data, res, next) {
+        const trip = {
+            id: data.length + 1,
+            bike_id: data.bikeId,
+            user_id: data.userId,
+            start_time: new Date().toLocaleString(),
+            end_time: "",
+            start_pos: data.geometry,
+            end_pos: "",
+            start_cost: "",
+            var_cost: "",
+            park_cost: ""
+        }
+
+        filePath = './data/trip.json'
+
+        helpers.addToJsonFile(filePath, trip, next)
+
+        return res.status(201).json(trip)
     }
 }
 

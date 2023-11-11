@@ -4,7 +4,7 @@
 
 const data = require('../data/bike.json')
 const helpers = require('./helpers.js')
-const trips = require('../data/trips.json')
+const tripsModel = require('./trips.js')
 
 const bike = {
     /**
@@ -77,27 +77,20 @@ const bike = {
      */
     rentBike: function rentBike(rent, res, next) {
         const bike = this.getOneBike(rent.bikeId, res, next)
-        let filePath = './data/bike.json'
+        const filePath = './data/bike.json'
 
         bike.statusId = "2"
         helpers.addToJsonFile(filePath, bike, next, rent.bikeId)
 
         const trip = {
-            id: trips.length + 1,
-            bike_id: rent.bikeId,
-            user_id: rent.userId,
-            start_time: rent.startTime,
-            end_time: "",
-            start_pos: rent.startPosition,
-            end_pos: "",
-            start_cost: "",
-            var_cost: "",
-            park_cost: ""
+            bikeId: rent.bikeId,
+            userId: rent.userId,
+            geometry: bike.geometry,
         }
 
-        filePath = './data/trip.json'
+        tripsModel.insertTrip(trip, res, next)
 
-        helpers.addToJsonFile(filePath, trip, next)
+        return res.status(201).json(trip)
     }
 }
 

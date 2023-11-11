@@ -74,9 +74,7 @@ router.post('/bikes/:id/rent', async (req, res, next) => {
      */
     const rent = {
         userId: req.body.userId,
-        bikeId: req.params.id,
-        startTime: req.body.startTime,
-        startPosition: req.body.startPosition
+        bikeId: req.params.id
     }
 
     const result = await bikesModel.rentBike(rent, res, next)
