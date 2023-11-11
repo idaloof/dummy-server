@@ -25,7 +25,7 @@ Skapa ny admin-användare med:
 POST /register
 ```
 Request-objektet måste innehålla email och lösenord.
-
+--------------------------------------------------------------------------------------------------------------------------------
 Logga in med admin-användare och få tillbaka token:
 ```
 POST /login
