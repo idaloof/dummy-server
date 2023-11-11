@@ -57,6 +57,14 @@ const user = {
         const userInfo = user.data
 
         helpers.addToJsonFile(filePath, userInfo, next, user.id)
+
+        return res.status(201).json({
+            id: user.id,
+            email: userInfo.email,
+            cardnr: userInfo.cardnr,
+            balance: userInfo.balance,
+            active: userInfo.active
+        })
     }
 }
 

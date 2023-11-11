@@ -3,7 +3,7 @@
         "id": "1",
         "email": "test@test.se",
         "cardnr": "6048 5644 8974 8450",
-        "balance": 100,
+        "balance": 200,
         "active": true
     },
     {
