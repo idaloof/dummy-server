@@ -16,7 +16,12 @@ const zone = {
      */
     getAllZones: function getAllZones(res, next) {
         try {
-            return res.status(200).json(data)
+            const decodedData = data.map(zone => ({
+                ...zone,
+                geometry: helpers.decodePolyString(zone.geometry)
+            }))
+
+            return res.status(200).json(decodedData)
         } catch (error) {
             next(error)
         }
@@ -35,10 +40,15 @@ const zone = {
             const index = data.findIndex(item => item.id === id);
 
             if (index === -1) {
-                return res.status(404).send('City not found');
+                return res.status(404).send('Zone not found');
             }
-    
-            return res.status(200).json(data[index]);
+
+            const zone = {
+                ...data[index],
+                geometry: helpers.decodePolyString(data[index].geometry)
+            };
+
+            return res.status(200).json(zone);
         } catch (parseErr) {
             next(parseErr)
         }

@@ -47,7 +47,7 @@ const helpers = {
      * @description Function that encodes an array of coordinates into
      * a polyline string.
      *
-     * @param {Array} coords Coordinates to encode.
+     * @param {Array} coords Coordinates to encode
      * 
      * @returns {String} Polyline string
      */
@@ -55,6 +55,19 @@ const helpers = {
         const polyString = polyline.encode(coords)
 
         return polyString
+    },
+    /**
+     * @description Function that decodes a polystring into
+     * an array of coordinates
+     *
+     * @param {String} polystring String to decode
+     * 
+     * @returns {Array} Array of coordinates
+     */
+    decodePolyString: function decodePolyString(polystring) {
+        const arrayOfCoords = polyline.decode(polystring)
+
+        return arrayOfCoords
     }
 }
 
