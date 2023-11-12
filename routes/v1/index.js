@@ -8,11 +8,11 @@ const adminAuthMiddleware = require('../../models/admin-auth.js').checkToken;
  */
 
 router.use('/admin', adminAuthMiddleware, require('./admin.js'))
-router.use('/', require('./bikes.js'))
-router.use('/', require('./cities.js'))
-router.use('/', require('./login.js'))
-router.use('/', require('./trips.js'))
-router.use('/', require('./users.js'))
-router.use('/', require('./zones.js'))
+router.use('/bikes', require('./bikes.js'))
+router.use('/cities', require('./cities.js'))
+router.use('/login', require('./login.js'))
+router.use('/trips', require('./trips.js'))
+router.use('/users', require('./users.js'))
+router.use('/zones', require('./zones.js'))
 
 module.exports = router

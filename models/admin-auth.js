@@ -36,8 +36,9 @@ const auth = {
                 }
 
                 req.user = {};
-                req.user.email = decoded.email;
+                req.user.id = decoded.id;
                 req.user.admin = decoded.admin;
+                console.log(req.user);
                 return next();
             });
         } else {
@@ -63,10 +64,11 @@ const auth = {
      */
     register: function register(req, res, next) {
         const saltRounds = 10;
-        const email = req.body.email;
+        const username = req.body.username;
         const password = req.body.password;
+        console.log(req.body);
 
-        if (!email || !password) {
+        if (!username || !password) {
             return res.status(401).json({
                 errors: {
                     status: 401,
@@ -93,7 +95,7 @@ const auth = {
                 {
                     "id": `${nrOfAdmins + 1}`,
                     "access": "what",
-                    "username": email,
+                    "username": username,
                     "hash": hash,
                     "active": true
                 },
@@ -102,7 +104,7 @@ const auth = {
 
             return res.status(201).json({
                 data: {
-                    message: `User ${email} successfully registered.`
+                    message: `User ${username} successfully registered.`
                 }
             });
         });
@@ -117,23 +119,23 @@ const auth = {
      *
      * @returns {Object} JSON object
      */
-    login: async function login(req, res, next) {
-        const email = req.body.email;
+    login: function login(req, res) {
+        const username = req.body.username;
         const password = req.body.password;
 
-        if (!email || !password) {
+        if (!username || !password) {
             return res.status(401).json({
                 errors: {
                     status: 401,
-                    source: "/login",
-                    title: "Email or password missing",
-                    detail: "Email or password missing in request"
+                    source: "/admin/login",
+                    title: "Username or password missing",
+                    detail: "Username or password missing in request"
                 }
             });
         }
 
         const data = require('../data/admin.json');
-        const index = data.findIndex(item => item.username === email);
+        const index = data.findIndex(item => item.username === username);
 
         if (index === -1) {
             return res.status(404).send('User not found');
@@ -141,9 +143,11 @@ const auth = {
         const hash = data[index].hash;
 
         const user = {
-            email: email,
+            id: data[index].id,
+            user: username,
             password: password,
-            hash: hash
+            hash: hash,
+            access: data[index].access
         }
 
         return auth.comparePasswords(
@@ -176,7 +180,7 @@ const auth = {
 
             if (result) {
                 const payload = {
-                    email: user.email,
+                    id: user.id,
                     admin: user.access
                 };
                 const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: '24h' });

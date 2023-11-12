@@ -18,7 +18,7 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.post('/admin/register', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
     await adminAuthModel.register(req, res, next)
 });
 

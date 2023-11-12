@@ -19,7 +19,7 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/bikes', (req, res, next) => {
+router.get('/', (req, res, next) => {
     bikesModel.getAllBikes(res, next)
 });
 
@@ -32,7 +32,7 @@ router.get('/bikes', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/bikes/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     const bikeId = req.params.id
 
     bikesModel.getOneBike(bikeId, res, next)
@@ -47,7 +47,7 @@ router.get('/bikes/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.put('/bikes/:id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
     const bike = {
         id: req.params.id,
         data: req.body.bike
@@ -65,7 +65,7 @@ router.put('/bikes/:id', (req, res, next) => {
  *
  * @returns {Response}
  */
-router.post('/bikes/:id/rent', async (req, res, next) => {
+router.post('/:id/rent', async (req, res, next) => {
     /**
      * När rent-routen anropas ska följande hända:
      * Cykelns status ska ändras
@@ -91,7 +91,7 @@ router.post('/bikes/:id/rent', async (req, res, next) => {
  *
  * @returns {Response}
  */
-router.post('/bikes/:id/return', async (req, res, next) => {
+router.post('/:id/return', async (req, res, next) => {
     /**
      * När return-routen anropas ska följande hända:
      * Cykelns status ska ändras

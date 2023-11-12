@@ -15,9 +15,16 @@
     },
     {
         "id": "3",
-        "access": "admin1",
-        "username": "admin",
+        "access": "admin",
+        "username": "admin1",
         "hash": "$2a$10$kB1g7MhB6VmTbhkLB3cZxuaK.rfoYPz2xySe9PoU4UNOEXvMygROK",
+        "active": true
+    },
+    {
+        "id": "4",
+        "access": "what",
+        "username": "admin4",
+        "hash": "$2a$10$Zvz8X6Ato1E7YspxAUEZPuY9XEcTzUduLCuz8VpMUfIpNS/RHnNTa",
         "active": true
     }
 ]

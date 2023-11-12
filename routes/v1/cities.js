@@ -19,7 +19,7 @@ const router = express.Router()
  *
  * @returns {Response}
  */
-router.get('/cities', (req, res, next) => {
+router.get('/', (req, res, next) => {
     citiesModel.getAllCities(res, next)
 });
 
@@ -32,7 +32,7 @@ router.get('/cities', (req, res, next) => {
  *
  * @returns {Response}
  */
-router.get('/cities/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     const cityId = req.params.id
 
     citiesModel.getOneCity(cityId, res, next)
@@ -47,7 +47,7 @@ router.get('/cities/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.post('/cities', (req, res, next) => {
+router.post('/', (req, res, next) => {
     citiesModel.insertCity(req, res, next)
 });
 
