@@ -33,11 +33,13 @@ Request-bodyn måste innehålla ett objekt med nycklarna:
 * email
 * password
 
+Request-headern måste innehålla token med admin-access i payload
+
 ________________________________________________________________
 
 Logga in med admin-användare och få tillbaka token:
 ```
-POST /v1/login
+POST /v1/admin/login
 ```
 Request-bodyn måste innehålla ett objekt med nycklarna:
 
