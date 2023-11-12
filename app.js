@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Här kan vi lägga in en middleware för att kolla API-nyckel?
 
-app.use('/', require('./routes/index.js'));
+app.use('/v1', require('./routes/v1/index.js'));
 
 // Här kan vi lägga in en middleware för felhantering
 
