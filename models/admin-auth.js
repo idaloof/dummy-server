@@ -48,6 +48,7 @@ const auth = {
                         }
                     });
                 }
+
                 req.user = {};
                 req.user.id = decoded.id;
                 req.user.admin = decoded.admin;
