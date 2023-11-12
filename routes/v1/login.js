@@ -1,0 +1,27 @@
+const express = require('express')
+const adminAuthModel = require('../../models/admin-auth.js')
+
+const router = express.Router()
+
+/**
+ * Note to self:
+ * Wrappa hämtningarna i en try catch där catch pekar
+ * mot felhanterings-middleware med hjälp av next
+ */
+
+/**
+ * @description Admin login route
+ *
+ * @param {Request} req Request object
+ * @param {Response} res Response object
+ * @param {Function} next Next function
+ *
+ * @returns {void}
+ */
+router.post('/login', (req, res, next) => {
+    adminAuthModel.login(req, res, next)
+});
+
+module.exports = router
+
+
