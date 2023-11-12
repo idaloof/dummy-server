@@ -12,7 +12,7 @@ const trip = {
      * @param {Response} res Response object
      * @param {Function} next Next function
      *
-     * @returns {Array} Array of trips
+     * @returns {void} Array of trips
      */
     getAllTrips: function getAllTrips(res, next) {
         try {
@@ -28,7 +28,7 @@ const trip = {
      * @param {Response} res Response object
      * @param {Function} next Next function
      *
-     * @returns {Object} Trip object
+     * @returns {void} Trip object
      */
     getOneTrip: function getOneTrip(id, res, next) {
         try {
