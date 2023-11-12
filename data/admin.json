@@ -5,5 +5,12 @@
         "username": "hej@hej.se",
         "hash": "$2a$10$C/v8yJWF2BheUD7yGiSY7eWaYlDCatbFf0dzBpUm5T7WzGMrsmB6K",
         "active": true
+    },
+    {
+        "id": "2",
+        "access": "what",
+        "username": "martin@martin.se",
+        "hash": "$2a$10$q603TlHBW9UV2lJ.V4F8n.PMh7p5RdyqxY9ET2Y8QotbkWfMi.bYS",
+        "active": true
     }
 ]
