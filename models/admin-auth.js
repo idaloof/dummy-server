@@ -35,6 +35,19 @@ const auth = {
                     });
                 }
 
+                if (!decoded.admin) {
+                    // if unaothorized request it is safer
+                    // to make it look like the page does not
+                    // exist
+                    return res.status(404).json({
+                        errors: {
+                            status: 404,
+                            source: req.originalUrl,
+                            title: "Not found",
+                            detail: "Page not found"
+                        }
+                    });
+                }
                 req.user = {};
                 req.user.id = decoded.id;
                 req.user.admin = decoded.admin;
