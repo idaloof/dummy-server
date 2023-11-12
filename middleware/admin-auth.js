@@ -1,9 +1,9 @@
-/**
- * @description Middleware functions to check if admin token is provided
- */
+// /**
+//  * @description Middleware functions to check if admin token is provided
+//  */
 
-const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET;
+// const jwt = require('jsonwebtoken');
+// const jwtSecret = process.env.JWT_SECRET;
 
 // /**
 //  * @description Function to validate admin token
