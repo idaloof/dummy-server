@@ -2,7 +2,6 @@
  * @description City model handling city requests
  */
 
-const fs = require('fs')
 const helpers = require('../models/helpers.js')
 const data = require('../data/city.json')
 
@@ -17,7 +16,12 @@ const city = {
      */
     getAllCities: function getAllCities(res, next) {
         try {
-            return res.status(200).json(data)
+            const decodedData = data.map(city => ({
+              ...city,
+                geometry: helpers.decodePolyString(city.geometry)
+            }))
+
+            return res.status(200).json(decodedData)
         } catch (error) {
             next(error)
         }
@@ -38,8 +42,13 @@ const city = {
             if (index === -1) {
                 return res.status(404).send('City not found');
             }
-    
-            return res.status(200).json(data[index]);
+
+            const city = {
+               ...data[index],
+                geometry: helpers.decodePolyString(data[index].geometry)
+            };
+
+            return res.status(200).json(city);
         } catch (parseErr) {
             next(parseErr)
         }
