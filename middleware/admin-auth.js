@@ -6,26 +6,6 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
 
 /**
- * @description Function to validate admin token
- *
- * @param {String} token Admin token
- * 
- * @returns {Boolean}
- */
-function verifyToken(token) {
-    if (token) {
-        try {
-            jwt.verify(token, jwtSecret);
-            return true;
-        } catch (err) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-/**
  * @description Function to check if admin token is provided
  *
  * @param {Request} req Request object
@@ -36,13 +16,16 @@ function verifyToken(token) {
  */
 function adminAuthMiddleware(req, res, next) {
     const token = req.headers['x-access-token'];
-    const payload = jwt.decode(token)
 
     if (!token) {
         return res.status(401).send('Admin token is required');
     }
 
-    if (!verifyToken(token)) {
+    let payload;
+
+    try {
+        payload = jwt.verify(token, jwtSecret);
+    } catch (err) {
         return res.status(403).send('Invalid admin token');
     }
 
