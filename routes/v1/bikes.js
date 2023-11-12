@@ -96,8 +96,10 @@ router.post('/bikes/:id/return', async (req, res, next) => {
      * När return-routen anropas ska följande hända:
      * Cykelns status ska ändras
      * En resa ska uppdateras (sluttid, slutposition)
-     * En trip_cost ska skapas
-     * En transaktion skapas
+     * Startkostnad läggs till resan
+     * Rörlig kostnad ska beräknas (med hjälp av tid och kostnad per tidsenhet)
+     * Parkeringskostnad läggs till resan
+     * Var någonstans i flödet ska vi ge rabatter på start- respektive parkeringskostnad?
      * Kundens saldo ändras
      */
     const rent = {
