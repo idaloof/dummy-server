@@ -12,7 +12,7 @@ const jwtSecret = process.env.JWT_SECRET;
  * 
  * @returns {Boolean}
  */
-function verfiyToken(token) {
+function verifyToken(token) {
     if (token) {
         try {
             jwt.verify(token, jwtSecret);
@@ -35,14 +35,19 @@ function verfiyToken(token) {
  * @returns {void}
  */
 function adminAuthMiddleware(req, res, next) {
-    const token = req.headers['admin-token'];
+    const token = req.headers['x-access-token'];
+    const payload = jwt.decode(token)
 
     if (!token) {
         return res.status(401).send('Admin token is required');
     }
 
-    if (!verfiyToken(token)) {
+    if (!verifyToken(token)) {
         return res.status(403).send('Invalid admin token');
+    }
+
+    if (!payload.admin) {
+        return res.status(403).send('You are not authorized to access');
     }
 
     next();

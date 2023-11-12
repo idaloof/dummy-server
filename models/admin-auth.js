@@ -143,7 +143,8 @@ const auth = {
 
             if (result) {
                 const payload = {
-                    email: user.email
+                    email: user.email,
+                    admin: true
                 };
                 const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: '24h' });
 
