@@ -52,14 +52,14 @@ const trip = {
      *
      * @returns {void}
      */
-    insertTrip: async function insertTrip(data, res, next) {
+    insertTrip: async function insertTrip(tripData, res, next) {
         const trip = {
             id: data.length + 1,
-            bike_id: data.bikeId,
-            user_id: data.userId,
+            bike_id: tripData.bikeId,
+            user_id: tripData.userId,
             start_time: new Date().toLocaleString(),
             end_time: "",
-            start_pos: data.geometry,
+            start_pos: tripData.geometry,
             end_pos: "",
             start_cost: "",
             var_cost: "",
