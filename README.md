@@ -18,7 +18,7 @@ För att kunna använda routen ```/login``` krävs en .env-fil med variabeln JWT
 
 Tips: generera din hemliga nyckel (32 tecken) i terminalen med kommandot ```openssl rand -base64 32```
 
-## Routes
+## Routes (v1)
 
 För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gäller framförallt routes som inte är GET-routes.
 
@@ -26,7 +26,7 @@ För att testa API:ets routes, föreslår jag att du jobbar i Postman. Detta gä
 
 Skapa ny admin-användare med:
 ```
-POST /register
+POST /v1/admin/register
 ```
 Request-bodyn måste innehålla ett objekt med nycklarna:
 
@@ -37,7 +37,7 @@ ________________________________________________________________
 
 Logga in med admin-användare och få tillbaka token:
 ```
-POST /login
+POST /v1/login
 ```
 Request-bodyn måste innehålla ett objekt med nycklarna:
 
@@ -50,19 +50,19 @@ ________________________________________________________________
 
 Hämta alla cyklar:
 ```
-GET /bikes
+GET /v1/bikes
 ```
 ________________________________________________________________
 
 Hämta en cykel:
 ```
-GET /bikes/:id
+GET /v1/bikes/:id
 ```
 ________________________________________________________________
 
 Uppdatera en cykel:
 ```
-PUT /bikes/:id
+PUT /v1/bikes/:id
 ```
 Request-bodyn måste innehålla ett objekt med nycklarna:
 
@@ -73,7 +73,7 @@ ________________________________________________________________
 
 Hyr en cykel:
 ```
-POST /bikes/:id/rent
+POST /v1/bikes/:id/rent
 ```
 
 Request-bodyn måste innehålla ett objekt med nyckeln:
@@ -84,7 +84,7 @@ ________________________________________________________________
 
 Avsluta cykeltur (ej klar):
 ```
-POST /bikes/:id/return
+POST /v1/bikes/:id/return
 ```
 
 När return-routen anropas ska följande hända:
@@ -99,19 +99,19 @@ ________________________________________________________________
 
 Hämta alla städer:
 ```
-GET /cities
+GET /v1/cities
 ```
 ________________________________________________________________
 
 Hämta en stad:
 ```
-GET /cities/:id
+GET /v1/cities/:id
 ```
 ________________________________________________________________
 
 Lägg till en stad (tillfällig route):
 ```
-POST /cities
+POST /v1/cities
 ```
 
 Request-bodyn måste innehålla ett objekt med nycklarna:
@@ -125,13 +125,13 @@ ________________________________________________________________
 
 Hämta alla resor:
 ```
-GET /trips
+GET /v1/trips
 ```
 ________________________________________________________________
 
 Hämta en resa:
 ```
-GET /trips/:id
+GET /v1/trips/:id
 ```
 ________________________________________________________________
 
@@ -139,19 +139,19 @@ ________________________________________________________________
 
 Hämta alla användare:
 ```
-GET /users
+GET /v1/users
 ```
 ________________________________________________________________
 
 Hämta en användare:
 ```
-GET /users/:id
+GET /v1/users/:id
 ```
 ________________________________________________________________
 
 Uppdatera en användare:
 ```
-PUT /users/:id
+PUT /v1/users/:id
 ```
 Request-bodyn måste innehålla ett objekt med nycklarna:
 
@@ -165,19 +165,19 @@ ________________________________________________________________
 
 Hämta alla zoner:
 ```
-GET /zones
+GET /v1/zones
 ```
 ________________________________________________________________
 
 Hämta en zon:
 ```
-GET /zones/:id
+GET /v1/zones/:id
 ```
 ________________________________________________________________
 
 Lägg till en zon (tillfällig route):
 ```
-POST /zones
+POST /v1/zones
 ```
 
 Request-bodyn måste innehålla ett objekt med nycklarna:
