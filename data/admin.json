@@ -12,5 +12,12 @@
         "username": "martin@martin.se",
         "hash": "$2a$10$q603TlHBW9UV2lJ.V4F8n.PMh7p5RdyqxY9ET2Y8QotbkWfMi.bYS",
         "active": true
+    },
+    {
+        "id": "3",
+        "access": "what",
+        "username": "fooladi@martin.se",
+        "hash": "$2a$10$vd07MiAyt7LqMz2S6pio.ejI4H8bVBaX7mG.Y6tB1UiXeQyzAIFxW",
+        "active": true
     }
 ]
