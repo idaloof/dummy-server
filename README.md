@@ -39,7 +39,7 @@ ________________________________________________________________
 
 Logga in med admin-användare och få tillbaka token:
 ```
-POST /v1/admin/login
+POST /v1/login/admin
 ```
 Request-bodyn måste innehålla ett objekt med nycklarna:
 

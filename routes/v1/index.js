@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const adminAuthMiddleware = require('../../middleware/admin-auth.js')
+// const adminAuthMiddleware = require('../../middleware/admin-auth.js')
+const adminAuthMiddleware = require('../../models/admin-auth.js').checkToken;
 
 /**
  * @description Collection of REST API endpoints
