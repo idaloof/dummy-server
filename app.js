@@ -1,8 +1,10 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-const morgan = require("morgan");
-const { default: errorHandler } = require("./middleware/errors.js");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import morgan from "morgan";
+import errorHandler from "./middleware/errors.js";
+
+dotenv.config();
 
 const app = express();
 const port = 1338;
