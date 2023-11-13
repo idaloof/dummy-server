@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 const port = 1338;
 
-app.use(morgan("combined"));
+app.use(morgan("dev"));
 
 app.use(cors());
 app.use(express.json());
