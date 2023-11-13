@@ -2,8 +2,8 @@
  * @description Zone model handling zone requests
  */
 
-const helpers = require('./helpers.js');
-const data = require('../data/zone_loc.json')
+const helpers = require("./helpers.js");
+const data = require("../data/zone_loc.json");
 
 const zone = {
     /**
@@ -16,14 +16,14 @@ const zone = {
      */
     getAllZones: function getAllZones(res, next) {
         try {
-            const decodedData = data.map(zone => ({
+            const decodedData = data.map((zone) => ({
                 ...zone,
                 geometry: helpers.decodePolyString(zone.geometry)
-            }))
+            }));
 
-            return res.status(200).json(decodedData)
+            return res.status(200).json(decodedData);
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
     /**
@@ -37,10 +37,10 @@ const zone = {
      */
     getOneZone: function getOneZone(id, res, next) {
         try {
-            const index = data.findIndex(item => item.id === id);
+            const index = data.findIndex((item) => item.id === id);
 
             if (index === -1) {
-                return res.status(404).send('Zone not found');
+                return res.status(404).send("Zone not found");
             }
 
             const zone = {
@@ -50,7 +50,7 @@ const zone = {
 
             return res.status(200).json(zone);
         } catch (parseErr) {
-            next(parseErr)
+            next(parseErr);
         }
     },
     /**
@@ -63,16 +63,16 @@ const zone = {
      * @returns {void}
      */
     insertZone: async function insertZone(req, res, next) {
-        let zone = req.body
+        let zone = req.body;
 
-        const zoneLocId = data.length + 1
-        const zoneTypeId = zone.zoneTypeId
-        const cityId = zone.cityId
-        const zoneCoords = zone.coords
+        const zoneLocId = data.length + 1;
+        const zoneTypeId = zone.zoneTypeId;
+        const cityId = zone.cityId;
+        const zoneCoords = zone.coords;
 
-        const polyString = helpers.encodeArrayOfCoords(zoneCoords)
-    
-        const filePath = './data/zone_loc.json'
+        const polyString = helpers.encodeArrayOfCoords(zoneCoords);
+
+        const filePath = "./data/zone_loc.json";
 
         zone = {
             id: `${zoneLocId}`,
@@ -80,12 +80,12 @@ const zone = {
             city_id: cityId,
             date_from: new Date().toLocaleDateString(),
             geometry: polyString
-        }
+        };
 
-        helpers.addToJsonFile(filePath, zone, next)
+        helpers.addToJsonFile(filePath, zone, next);
 
-        return res.status(201).json(zone)
+        return res.status(201).json(zone);
     }
-}
+};
 
-module.exports = zone
+module.exports = zone;

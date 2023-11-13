@@ -2,8 +2,8 @@
  * @description City model handling city requests
  */
 
-const helpers = require('../models/helpers.js')
-const data = require('../data/city.json')
+const helpers = require("../models/helpers.js");
+const data = require("../data/city.json");
 
 const city = {
     /**
@@ -16,14 +16,14 @@ const city = {
      */
     getAllCities: function getAllCities(res, next) {
         try {
-            const decodedData = data.map(city => ({
-              ...city,
+            const decodedData = data.map((city) => ({
+                ...city,
                 geometry: helpers.decodePolyString(city.geometry)
-            }))
+            }));
 
-            return res.status(200).json(decodedData)
+            return res.status(200).json(decodedData);
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
     /**
@@ -37,20 +37,20 @@ const city = {
      */
     getOneCity: function getOneCity(id, res, next) {
         try {
-            const index = data.findIndex(item => item.id === id);
+            const index = data.findIndex((item) => item.id === id);
 
             if (index === -1) {
-                return res.status(404).send('City not found');
+                return res.status(404).send("City not found");
             }
 
             const city = {
-               ...data[index],
+                ...data[index],
                 geometry: helpers.decodePolyString(data[index].geometry)
             };
 
             return res.status(200).json(city);
         } catch (parseErr) {
-            next(parseErr)
+            next(parseErr);
         }
     },
     /**
@@ -63,26 +63,26 @@ const city = {
      * @returns {void}
      */
     insertCity: async function insertCity(req, res, next) {
-        let city = req.body
+        let city = req.body;
 
-        const cityId = data.length + 1
-        const cityName = city.name
-        const cityCoords = city.coords
+        const cityId = data.length + 1;
+        const cityName = city.name;
+        const cityCoords = city.coords;
 
-        const polyString = helpers.encodeArrayOfCoords(cityCoords)
-    
-        const filePath = './data/city.json'
+        const polyString = helpers.encodeArrayOfCoords(cityCoords);
+
+        const filePath = "./data/city.json";
 
         city = {
             id: cityId,
             name: cityName,
             geometry: polyString
-        }
+        };
 
-        helpers.addToJsonFile(filePath, city, next)
+        helpers.addToJsonFile(filePath, city, next);
 
-        return res.status(201).json(city)
+        return res.status(201).json(city);
     }
-}
+};
 
-module.exports = city
+module.exports = city;

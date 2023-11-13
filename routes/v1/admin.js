@@ -1,7 +1,7 @@
-const express = require('express')
-const adminAuthModel = require('../../models/admin-auth.js')
+const express = require("express");
+const adminAuthModel = require("../../models/admin-auth.js");
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -18,10 +18,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.post('/register', async (req, res, next) => {
-    await adminAuthModel.register(req, res, next)
+router.post("/register", async (req, res, next) => {
+    await adminAuthModel.register(req, res, next);
 });
 
-module.exports = router
-
-
+module.exports = router;

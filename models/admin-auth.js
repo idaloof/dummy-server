@@ -2,12 +2,12 @@
  * @description Auth model handling registration, login and comparing passwords
  */
 
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
-const helpers = require('./helpers.js');
-const filePath = './data/admin.json';
-const nrOfAdmins = require('../data/admin.json').length;
+const helpers = require("./helpers.js");
+const filePath = "./data/admin.json";
+const nrOfAdmins = require("../data/admin.json").length;
 
 /**
  * Note to self:
@@ -19,11 +19,11 @@ const nrOfAdmins = require('../data/admin.json').length;
  */
 
 const auth = {
-    checkToken: function(req, res, next) {
-        let token = req.headers['x-access-token'];
+    checkToken: function (req, res, next) {
+        let token = req.headers["x-access-token"];
 
         if (token) {
-            jwt.verify(token, jwtSecret, function(err, decoded) {
+            jwt.verify(token, jwtSecret, function (err, decoded) {
                 if (err) {
                     return res.status(500).json({
                         errors: {
@@ -92,7 +92,7 @@ const auth = {
                 }
             });
         }
-        bcrypt.hash(password, saltRounds, async function(err, hash) {
+        bcrypt.hash(password, saltRounds, async function (err, hash) {
             if (err) {
                 return res.status(500).json({
                     errors: {
@@ -107,14 +107,14 @@ const auth = {
             helpers.addToJsonFile(
                 filePath,
                 {
-                    "id": `${nrOfAdmins + 1}`,
-                    "access": "what",
-                    "username": username,
-                    "hash": hash,
-                    "active": true
+                    id: `${nrOfAdmins + 1}`,
+                    access: "what",
+                    username: username,
+                    hash: hash,
+                    active: true
                 },
                 next
-            )
+            );
 
             return res.status(201).json({
                 data: {
@@ -148,11 +148,11 @@ const auth = {
             });
         }
 
-        const data = require('../data/admin.json');
-        const index = data.findIndex(item => item.username === username);
+        const data = require("../data/admin.json");
+        const index = data.findIndex((item) => item.username === username);
 
         if (index === -1) {
-            return res.status(404).send('User not found');
+            return res.status(404).send("User not found");
         }
         const hash = data[index].hash;
 
@@ -162,13 +162,9 @@ const auth = {
             password: password,
             hash: hash,
             access: data[index].access
-        }
+        };
 
-        return auth.comparePasswords(
-            res,
-            password,
-            user,
-        );
+        return auth.comparePasswords(res, password, user);
     },
     /**
      * @description Function that compares passwords
@@ -197,7 +193,7 @@ const auth = {
                     id: user.id,
                     admin: user.access
                 };
-                const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: '24h' });
+                const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: "24h" });
 
                 return res.json({
                     data: {
@@ -218,7 +214,7 @@ const auth = {
                 }
             });
         });
-    },
+    }
 };
 
-module.exports = auth
+module.exports = auth;

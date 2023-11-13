@@ -1,7 +1,7 @@
-const express = require('express')
-const usersModel = require('../../models/users.js')
+const express = require("express");
+const usersModel = require("../../models/users.js");
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -19,8 +19,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/', (req, res, next) => {
-    usersModel.getAllUsers(res, next)
+router.get("/", (req, res, next) => {
+    usersModel.getAllUsers(res, next);
 });
 
 /**
@@ -32,10 +32,10 @@ router.get('/', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/:id', (req, res, next) => {
-    const userId = req.params.id
+router.get("/:id", (req, res, next) => {
+    const userId = req.params.id;
 
-    usersModel.getOneUser(userId ,res, next)
+    usersModel.getOneUser(userId, res, next);
 });
 
 /**
@@ -47,13 +47,13 @@ router.get('/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.put('/:id', (req, res, next) => {
+router.put("/:id", (req, res, next) => {
     const user = {
         id: req.params.id,
         data: req.body
-    }
+    };
 
-    usersModel.updateUser(user ,res, next)
+    usersModel.updateUser(user, res, next);
 });
 
-module.exports = router
+module.exports = router;
