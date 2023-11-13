@@ -19,7 +19,7 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/trips', (req, res, next) => {
+router.get('/', (req, res, next) => {
     tripsModel.getAllTrips(res, next)
 });
 
@@ -32,7 +32,7 @@ router.get('/trips', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/trips/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     const tripId = req.params.id
 
     tripsModel.getOneTrip(tripId, res, next)

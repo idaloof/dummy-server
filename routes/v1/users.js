@@ -19,7 +19,7 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/users', (req, res, next) => {
+router.get('/', (req, res, next) => {
     usersModel.getAllUsers(res, next)
 });
 
@@ -32,7 +32,7 @@ router.get('/users', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/users/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     const userId = req.params.id
 
     usersModel.getOneUser(userId ,res, next)
@@ -47,7 +47,7 @@ router.get('/users/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.put('/users/:id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
     const user = {
         id: req.params.id,
         data: req.body

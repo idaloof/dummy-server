@@ -1,6 +1,6 @@
 [
     {
-        "id": "2",
+        "id": "1",
         "access": "what",
         "username": "hej@hej.se",
         "hash": "$2a$10$C/v8yJWF2BheUD7yGiSY7eWaYlDCatbFf0dzBpUm5T7WzGMrsmB6K",
@@ -18,6 +18,13 @@
         "access": "what",
         "username": "fooladi@martin.se",
         "hash": "$2a$10$vd07MiAyt7LqMz2S6pio.ejI4H8bVBaX7mG.Y6tB1UiXeQyzAIFxW",
+        "active": true
+    },
+    {
+        "id": "4",
+        "access": "what",
+        "username": "admin4",
+        "hash": "$2a$10$Zvz8X6Ato1E7YspxAUEZPuY9XEcTzUduLCuz8VpMUfIpNS/RHnNTa",
         "active": true
     }
 ]

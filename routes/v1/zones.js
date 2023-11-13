@@ -19,7 +19,7 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/zones', (req, res, next) => {
+router.get('/', (req, res, next) => {
     zonesModel.getAllZones(res, next)
 });
 
@@ -32,7 +32,7 @@ router.get('/zones', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/zones/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     const zoneId = req.params.id
 
     zonesModel.getOneZone(zoneId, res, next)
@@ -47,7 +47,7 @@ router.get('/zones/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.post('/zones', (req, res, next) => {
+router.post('/', (req, res, next) => {
     zonesModel.insertZone(req, res, next)
 });
 

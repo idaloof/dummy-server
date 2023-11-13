@@ -18,8 +18,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.post('/login', (req, res, next) => {
-    adminAuthModel.login(req, res, next)
+router.post('/admin', (req, res) => {
+    adminAuthModel.login(req, res);
 });
 
 module.exports = router

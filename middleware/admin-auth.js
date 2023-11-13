@@ -1,39 +1,55 @@
-/**
- * @description Middleware functions to check if admin token is provided
- */
+// /**
+//  * @description Middleware functions to check if admin token is provided
+//  */
 
-const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET;
+// const jwt = require('jsonwebtoken');
+// const jwtSecret = process.env.JWT_SECRET;
 
-/**
- * @description Function to check if admin token is provided
- *
- * @param {Request} req Request object
- * @param {Response} res Response object
- * @param {Function} next Next function
- *
- * @returns {void}
- */
-function adminAuthMiddleware(req, res, next) {
-    const token = req.headers['x-access-token'];
+// /**
+//  * @description Function to validate admin token
+//  *
+//  * @param {String} token Admin token
+//  * 
+//  * @returns {Boolean}
+//  */
+// function verfiyToken(token) {
+//     if (token) {
+//         try {
+//             jwt.verify(token, jwtSecret);
+//             return true;
+//         } catch (err) {
+//             return false;
+//         }
+//     }
 
-    if (!token) {
-        return res.status(401).send('Admin token is required');
-    }
+//     return true;
+// }
 
-    let payload;
+// Flyttade in denna i auth-modellen :) /J
 
-    try {
-        payload = jwt.verify(token, jwtSecret);
-    } catch (err) {
-        return res.status(403).send('Invalid admin token');
-    }
 
-    if (!payload.admin) {
-        return res.status(403).send('You are not authorized to access');
-    }
 
-    next();
-}
+// /**
+//  * @description Function to check if admin token is provided
+//  *
+//  * @param {Request} req Request object
+//  * @param {Response} res Response object
+//  * @param {Function} next Next function
+//  *
+//  * @returns {void}
+//  */
+// function adminAuthMiddleware(req, res, next) {
+//     const token = req.headers['admin-token'];
 
-module.exports = adminAuthMiddleware
+//     if (!token) {
+//         return res.status(401).send('Admin token is required');
+//     }
+
+//     if (!verfiyToken(token)) {
+//         return res.status(403).send('Invalid admin token');
+//     }
+
+//     next();
+// }
+
+// module.exports = adminAuthMiddleware
