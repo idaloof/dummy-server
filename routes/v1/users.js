@@ -1,5 +1,5 @@
-const express = require("express");
-const usersModel = require("../../models/users.js");
+import express from "express";
+import usersModel from "../../models/users.js";
 
 const router = express.Router();
 
@@ -56,4 +56,4 @@ router.put("/:id", (req, res, next) => {
     usersModel.updateUser(user, res, next);
 });
 
-module.exports = router;
+export default router;

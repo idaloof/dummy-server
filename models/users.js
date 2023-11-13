@@ -2,7 +2,7 @@
  * @description User model handling user requests
  */
 
-const helpers = require("./helpers.js");
+import helpers from "./helpers.js";
 const data = require("../data/user.json");
 
 const user = {
@@ -68,4 +68,4 @@ const user = {
     }
 };
 
-module.exports = user;
+export default user;

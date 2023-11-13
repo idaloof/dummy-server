@@ -2,9 +2,9 @@
  * @description Bike model handling bike requests
  */
 
+import helpers from "./helpers.js";
+import tripsModel from "./trips.js";
 const data = require("../data/bike.json");
-const helpers = require("./helpers.js");
-const tripsModel = require("./trips.js");
 
 const bike = {
     /**
@@ -96,4 +96,4 @@ const bike = {
     }
 };
 
-module.exports = bike;
+export default bike;

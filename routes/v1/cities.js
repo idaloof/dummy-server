@@ -1,5 +1,5 @@
-const express = require("express");
-const citiesModel = require("../../models/cities.js");
+import express from "express";
+import citiesModel from "../../models/cities.js";
 
 const router = express.Router();
 
@@ -51,4 +51,4 @@ router.post("/", (req, res, next) => {
     citiesModel.insertCity(req, res, next);
 });
 
-module.exports = router;
+export default router;

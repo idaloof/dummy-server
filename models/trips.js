@@ -2,8 +2,8 @@
  * @description Trip model handling trip requests
  */
 
+import helpers from "./helpers.js";
 const data = require("../data/trip.json");
-const helpers = require("./helpers.js");
 
 const trip = {
     /**
@@ -72,4 +72,4 @@ const trip = {
     }
 };
 
-module.exports = trip;
+export default trip;

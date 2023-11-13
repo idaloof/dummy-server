@@ -1,5 +1,5 @@
-const express = require("express");
-const zonesModel = require("../../models/zones.js");
+import express from "express";
+import zonesModel from "../../models/zones.js";
 
 const router = express.Router();
 
@@ -51,4 +51,4 @@ router.post("/", (req, res, next) => {
     zonesModel.insertZone(req, res, next);
 });
 
-module.exports = router;
+export default router;

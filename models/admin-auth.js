@@ -2,12 +2,15 @@
  * @description Auth model handling registration, login and comparing passwords
  */
 
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const jwtSecret = process.env.JWT_SECRET;
-const helpers = require("./helpers.js");
-const filePath = "./data/admin.json";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+import helpers from "./helpers.js";
+
 const nrOfAdmins = require("../data/admin.json").length;
+
+const jwtSecret = process.env.JWT_SECRET;
+const filePath = "./data/admin.json";
 
 /**
  * Note to self:

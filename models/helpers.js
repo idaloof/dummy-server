@@ -1,5 +1,5 @@
-const fs = require("fs");
-const polyline = require("@mapbox/polyline");
+import fs from "fs";
+import polyline from "@mapbox/polyline";
 
 const helpers = {
     /**
@@ -70,4 +70,4 @@ const helpers = {
     }
 };
 
-module.exports = helpers;
+export default helpers;

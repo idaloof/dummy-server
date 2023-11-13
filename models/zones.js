@@ -2,7 +2,7 @@
  * @description Zone model handling zone requests
  */
 
-const helpers = require("./helpers.js");
+import helpers from "./helpers.js";
 const data = require("../data/zone_loc.json");
 
 const zone = {
@@ -88,4 +88,4 @@ const zone = {
     }
 };
 
-module.exports = zone;
+export default zone;

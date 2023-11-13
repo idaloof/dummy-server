@@ -2,7 +2,7 @@
  * @description City model handling city requests
  */
 
-const helpers = require("../models/helpers.js");
+import helpers from "../models/helpers.js";
 const data = require("../data/city.json");
 
 const city = {
@@ -85,4 +85,4 @@ const city = {
     }
 };
 
-module.exports = city;
+export default city;

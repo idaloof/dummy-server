@@ -1,5 +1,5 @@
-const express = require("express");
-const bikesModel = require("../../models/bikes.js");
+import express from "express";
+import bikesModel from "../../models/bikes.js";
 
 const router = express.Router();
 
@@ -112,4 +112,4 @@ router.post("/:id/return", async (req, res, next) => {
     return result;
 });
 
-module.exports = router;
+export default router;
