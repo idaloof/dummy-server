@@ -1,5 +1,5 @@
 import express from "express";
-import { checkToken } from "../../models/admin-auth.js";
+import authModel from "../../models/admin-auth.js";
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ import usersRouter from "./users.js";
 import zonesRouter from "./zones.js";
 
 // API Routes
-router.use("/admin", checkToken, adminRouter);
+router.use("/admin", authModel.checkToken, adminRouter);
 router.use("/bikes", bikesRouter);
 router.use("/cities", citiesRouter);
 router.use("/login", loginRouter);

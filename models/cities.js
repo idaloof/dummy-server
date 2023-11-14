@@ -3,7 +3,10 @@
  */
 
 import helpers from "../models/helpers.js";
-const data = require("../data/city.json");
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/city.json", "utf-8"));
+
 
 const city = {
     /**

@@ -3,7 +3,10 @@
  */
 
 import helpers from "./helpers.js";
-const data = require("../data/user.json");
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/user.json", "utf-8"));
+
 
 const user = {
     /**

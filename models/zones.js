@@ -3,7 +3,9 @@
  */
 
 import helpers from "./helpers.js";
-const data = require("../data/zone_loc.json");
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/zone_loc.json", "utf-8"));
 
 const zone = {
     /**

@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import errorHandler from "./middleware/errors.js";
+import apiRouter from "./routes/v1/index.js";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 // Här kan vi lägga in en middleware för att kolla API-nyckel?
 
-app.use("/v1", require("./routes/v1/index.js"));
+app.use("/v1", apiRouter);
 
 app.use(errorHandler);
 

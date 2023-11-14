@@ -6,11 +6,14 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import helpers from "./helpers.js";
+import fs from "fs";
 
-const nrOfAdmins = require("../data/admin.json").length;
+const filePath = "./data/admin.json";
+const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+const nrOfAdmins = data.length;
 
 const jwtSecret = process.env.JWT_SECRET;
-const filePath = "./data/admin.json";
+
 
 /**
  * Note to self:
@@ -220,4 +223,4 @@ const auth = {
     }
 };
 
-module.exports = auth;
+export default auth;

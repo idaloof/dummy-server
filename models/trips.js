@@ -3,7 +3,10 @@
  */
 
 import helpers from "./helpers.js";
-const data = require("../data/trip.json");
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/trip.json", "utf-8"));
+
 
 const trip = {
     /**

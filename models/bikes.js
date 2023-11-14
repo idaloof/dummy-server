@@ -4,7 +4,9 @@
 
 import helpers from "./helpers.js";
 import tripsModel from "./trips.js";
-const data = require("../data/bike.json");
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/bike.json", "utf-8"));
 
 const bike = {
     /**
