@@ -7,7 +7,6 @@ import fs from "fs";
 
 const data = JSON.parse(fs.readFileSync("./data/city.json", "utf-8"));
 
-
 const city = {
     /**
      * @description Function that returns all cities

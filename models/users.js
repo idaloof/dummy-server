@@ -7,7 +7,6 @@ import fs from "fs";
 
 const data = JSON.parse(fs.readFileSync("./data/user.json", "utf-8"));
 
-
 const user = {
     /**
      * @description Function that returns all users

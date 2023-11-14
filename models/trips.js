@@ -7,7 +7,6 @@ import fs from "fs";
 
 const data = JSON.parse(fs.readFileSync("./data/trip.json", "utf-8"));
 
-
 const trip = {
     /**
      * @description Function that returns all trips
