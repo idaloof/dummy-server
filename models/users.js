@@ -2,8 +2,10 @@
  * @description User model handling user requests
  */
 
-const helpers = require('./helpers.js');
-const data = require('../data/user.json')
+import helpers from "./helpers.js";
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/user.json", "utf-8"));
 
 const user = {
     /**
@@ -16,9 +18,9 @@ const user = {
      */
     getAllUsers: function getAllUsers(res, next) {
         try {
-            return res.status(200).json(data)
+            return res.status(200).json(data);
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
     /**
@@ -32,15 +34,15 @@ const user = {
      */
     getOneUser: function getOneUser(id, res, next) {
         try {
-            const index = data.findIndex(item => item.id === id);
+            const index = data.findIndex((item) => item.id === id);
 
             if (index === -1) {
-                return res.status(404).send('User not found');
+                return res.status(404).send("User not found");
             }
-    
+
             return res.status(200).json(data[index]);
         } catch (parseErr) {
-            next(parseErr)
+            next(parseErr);
         }
     },
     /**
@@ -53,10 +55,10 @@ const user = {
      * @returns {Object} User object
      */
     updateUser: function updateUser(user, res, next) {
-        const filePath = './data/user.json'
-        const userInfo = user.data
+        const filePath = "./data/user.json";
+        const userInfo = user.data;
 
-        helpers.addToJsonFile(filePath, userInfo, next, user.id)
+        helpers.addToJsonFile(filePath, userInfo, next, user.id);
 
         return res.status(201).json({
             id: user.id,
@@ -64,8 +66,8 @@ const user = {
             cardnr: userInfo.cardnr,
             balance: userInfo.balance,
             active: userInfo.active
-        })
+        });
     }
-}
+};
 
-module.exports = user
+export default user;

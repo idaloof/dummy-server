@@ -1,7 +1,7 @@
-const express = require('express')
-const citiesModel = require('../../models/cities.js')
+import express from "express";
+import citiesModel from "../../models/cities.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -19,8 +19,8 @@ const router = express.Router()
  *
  * @returns {Response}
  */
-router.get('/', (req, res, next) => {
-    citiesModel.getAllCities(res, next)
+router.get("/", (req, res, next) => {
+    citiesModel.getAllCities(res, next);
 });
 
 /**
@@ -32,10 +32,10 @@ router.get('/', (req, res, next) => {
  *
  * @returns {Response}
  */
-router.get('/:id', (req, res, next) => {
-    const cityId = req.params.id
+router.get("/:id", (req, res, next) => {
+    const cityId = req.params.id;
 
-    citiesModel.getOneCity(cityId, res, next)
+    citiesModel.getOneCity(cityId, res, next);
 });
 
 /**
@@ -47,8 +47,8 @@ router.get('/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.post('/', (req, res, next) => {
-    citiesModel.insertCity(req, res, next)
+router.post("/", (req, res, next) => {
+    citiesModel.insertCity(req, res, next);
 });
 
-module.exports = router
+export default router;

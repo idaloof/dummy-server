@@ -1,18 +1,23 @@
-const express = require('express')
-const router = express.Router()
-// const adminAuthMiddleware = require('../../middleware/admin-auth.js')
-const adminAuthMiddleware = require('../../models/admin-auth.js').checkToken;
+import express from "express";
+import authModel from "../../models/admin-auth.js";
 
-/**
- * @description Collection of REST API endpoints
- */
+const router = express.Router();
 
-router.use('/admin', adminAuthMiddleware, require('./admin.js'))
-router.use('/bikes', require('./bikes.js'))
-router.use('/cities', require('./cities.js'))
-router.use('/login', require('./login.js'))
-router.use('/trips', require('./trips.js'))
-router.use('/users', require('./users.js'))
-router.use('/zones', require('./zones.js'))
+import adminRouter from "./admin.js";
+import bikesRouter from "./bikes.js";
+import citiesRouter from "./cities.js";
+import loginRouter from "./login.js";
+import tripsRouter from "./trips.js";
+import usersRouter from "./users.js";
+import zonesRouter from "./zones.js";
 
-module.exports = router
+// API Routes
+router.use("/admin", authModel.checkToken, adminRouter);
+router.use("/bikes", bikesRouter);
+router.use("/cities", citiesRouter);
+router.use("/login", loginRouter);
+router.use("/trips", tripsRouter);
+router.use("/users", usersRouter);
+router.use("/zones", zonesRouter);
+
+export default router;

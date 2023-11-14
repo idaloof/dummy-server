@@ -1,7 +1,7 @@
-const express = require('express')
-const tripsModel = require('../../models/trips.js')
+import express from "express";
+import tripsModel from "../../models/trips.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -19,8 +19,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/', (req, res, next) => {
-    tripsModel.getAllTrips(res, next)
+router.get("/", (req, res, next) => {
+    tripsModel.getAllTrips(res, next);
 });
 
 /**
@@ -32,10 +32,10 @@ router.get('/', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/:id', (req, res, next) => {
-    const tripId = req.params.id
+router.get("/:id", (req, res, next) => {
+    const tripId = req.params.id;
 
-    tripsModel.getOneTrip(tripId, res, next)
+    tripsModel.getOneTrip(tripId, res, next);
 });
 
-module.exports = router
+export default router;

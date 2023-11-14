@@ -26,5 +26,12 @@
         "username": "admin4",
         "hash": "$2a$10$Zvz8X6Ato1E7YspxAUEZPuY9XEcTzUduLCuz8VpMUfIpNS/RHnNTa",
         "active": true
+    },
+    {
+        "id": "5",
+        "access": "what",
+        "username": "alle",
+        "hash": "$2a$10$3RtKT2v6ALMrCFJu0Nevhu9Eu.T7VMr8kTfmOUzFHg.BNPiLmEFJ6",
+        "active": true
     }
 ]

@@ -1,7 +1,7 @@
-const express = require('express')
-const adminAuthModel = require('../../models/admin-auth.js')
+import express from "express";
+import adminAuthModel from "../../models/admin-auth.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -18,10 +18,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.post('/admin', (req, res) => {
+router.post("/admin", (req, res) => {
     adminAuthModel.login(req, res);
 });
 
-module.exports = router
-
-
+export default router;

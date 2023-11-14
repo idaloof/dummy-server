@@ -1,7 +1,7 @@
-const express = require('express')
-const bikesModel = require('../../models/bikes.js')
+import express from "express";
+import bikesModel from "../../models/bikes.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -19,8 +19,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/', (req, res, next) => {
-    bikesModel.getAllBikes(res, next)
+router.get("/", (req, res, next) => {
+    bikesModel.getAllBikes(res, next);
 });
 
 /**
@@ -32,10 +32,10 @@ router.get('/', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/:id', (req, res, next) => {
-    const bikeId = req.params.id
+router.get("/:id", (req, res, next) => {
+    const bikeId = req.params.id;
 
-    bikesModel.getOneBike(bikeId, res, next)
+    bikesModel.getOneBike(bikeId, res, next);
 });
 
 /**
@@ -47,13 +47,13 @@ router.get('/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.put('/:id', (req, res, next) => {
+router.put("/:id", (req, res, next) => {
     const bike = {
         id: req.params.id,
         data: req.body.bike
-    }
+    };
 
-    bikesModel.updateBike(bike, res, next)
+    bikesModel.updateBike(bike, res, next);
 });
 
 /**
@@ -65,7 +65,7 @@ router.put('/:id', (req, res, next) => {
  *
  * @returns {Response}
  */
-router.post('/:id/rent', async (req, res, next) => {
+router.post("/:id/rent", async (req, res, next) => {
     /**
      * När rent-routen anropas ska följande hända:
      * Cykelns status ska ändras
@@ -75,11 +75,11 @@ router.post('/:id/rent', async (req, res, next) => {
     const rent = {
         userId: req.body.userId,
         bikeId: req.params.id
-    }
+    };
 
-    const result = await bikesModel.rentBike(rent, res, next)
+    const result = await bikesModel.rentBike(rent, res, next);
 
-    return result // frågan är vad som ska returneras
+    return result; // frågan är vad som ska returneras
 });
 
 /**
@@ -91,7 +91,7 @@ router.post('/:id/rent', async (req, res, next) => {
  *
  * @returns {Response}
  */
-router.post('/:id/return', async (req, res, next) => {
+router.post("/:id/return", async (req, res, next) => {
     /**
      * När return-routen anropas ska följande hända:
      * Cykelns status ska ändras
@@ -105,11 +105,11 @@ router.post('/:id/return', async (req, res, next) => {
     const rent = {
         bikeId: req.params.id,
         tripId: req.body.tripId // via resan kommer vi åt userId
-    }
+    };
 
-    const result = await bikesModel.returnBike(rent, res, next)
+    const result = await bikesModel.returnBike(rent, res, next);
 
-    return result
+    return result;
 });
 
-module.exports = router
+export default router;

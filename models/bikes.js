@@ -2,9 +2,11 @@
  * @description Bike model handling bike requests
  */
 
-const data = require('../data/bike.json')
-const helpers = require('./helpers.js')
-const tripsModel = require('./trips.js')
+import helpers from "./helpers.js";
+import tripsModel from "./trips.js";
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/bike.json", "utf-8"));
 
 const bike = {
     /**
@@ -17,9 +19,9 @@ const bike = {
      */
     getAllBikes: function getAllBikes(res, next) {
         try {
-            return res.status(200).json(data)
+            return res.status(200).json(data);
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
     /**
@@ -33,15 +35,15 @@ const bike = {
      */
     getOneBike: function getOneBike(id, res, next) {
         try {
-            const index = data.findIndex(item => item.id === id);
+            const index = data.findIndex((item) => item.id === id);
 
             if (index === -1) {
-                return res.status(404).send('Bike not found');
+                return res.status(404).send("Bike not found");
             }
-    
+
             return res.status(200).json(data[index]);
         } catch (parseErr) {
-            next(parseErr)
+            next(parseErr);
         }
     },
     /**
@@ -54,17 +56,17 @@ const bike = {
      * @returns {Object} Bike object
      */
     updateBike: function updateBike(bike, res, next) {
-        const filePath = './data/bike.json'
-        const bikeInfo = bike.data
+        const filePath = "./data/bike.json";
+        const bikeInfo = bike.data;
 
-        helpers.addToJsonFile(filePath, bikeInfo, next, bike.id)
+        helpers.addToJsonFile(filePath, bikeInfo, next, bike.id);
 
         return res.status(201).json({
             id: bike.id,
             cityId: bikeInfo.cityId,
             statusId: bikeInfo.statusId,
             geometry: bikeInfo.geometry
-        })
+        });
     },
     /**
      * @description Function that rents a bike and starts a trip
@@ -76,24 +78,24 @@ const bike = {
      * @returns {void}
      */
     rentBike: function rentBike(rent, res, next) {
-        const index = data.findIndex(item => item.id === rent.bikeId);
-        const bike = data[index]
-        const filePath = './data/bike.json'
+        const index = data.findIndex((item) => item.id === rent.bikeId);
+        const bike = data[index];
+        const filePath = "./data/bike.json";
 
-        bike.status_id = "2"
-        helpers.addToJsonFile(filePath, bike, next, rent.bikeId)
+        bike.status_id = "2";
+        helpers.addToJsonFile(filePath, bike, next, rent.bikeId);
 
         // kanske bör tripsmodellen anropas direkt i routen
         const trip = {
             bikeId: rent.bikeId,
             userId: rent.userId,
-            geometry: bike.geometry,
-        }
+            geometry: bike.geometry
+        };
 
-        tripsModel.insertTrip(trip, res, next)
+        tripsModel.insertTrip(trip, res, next);
 
-        return res.status(201).json(trip)
+        return res.status(201).json(trip);
     }
-}
+};
 
-module.exports = bike
+export default bike;
