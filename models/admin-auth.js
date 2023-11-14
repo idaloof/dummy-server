@@ -12,9 +12,6 @@ const filePath = "./data/admin.json";
 const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 const nrOfAdmins = data.length;
 
-const jwtSecret = process.env.JWT_SECRET;
-
-
 /**
  * Note to self:
  * next-funktionen kan användas vid error.
@@ -29,7 +26,7 @@ const auth = {
         let token = req.headers["x-access-token"];
 
         if (token) {
-            jwt.verify(token, jwtSecret, function (err, decoded) {
+            jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
                 if (err) {
                     return res.status(500).json({
                         errors: {
@@ -154,7 +151,7 @@ const auth = {
             });
         }
 
-        const data = require("../data/admin.json");
+        const data = JSON.parse(fs.readFileSync("./data/admin.json", "utf-8"));
         const index = data.findIndex((item) => item.username === username);
 
         if (index === -1) {
@@ -199,7 +196,7 @@ const auth = {
                     id: user.id,
                     admin: user.access
                 };
-                const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: "24h" });
+                const jwtToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "24h" });
 
                 return res.json({
                     data: {
