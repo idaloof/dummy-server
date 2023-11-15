@@ -2,8 +2,10 @@
  * @description User model handling user requests
  */
 
-const helpers = require('./helpers.js');
-const data = require('../data/user.json')
+import helpers from "./helpers.js";
+import fs from "fs";
+
+const data = JSON.parse(fs.readFileSync("./data/user.json", "utf-8"));
 
 const user = {
     /**
@@ -16,9 +18,9 @@ const user = {
      */
     getAllUsers: function getAllUsers(res, next) {
         try {
-            return res.status(200).json(data)
+            return res.status(200).json(data);
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
     /**
@@ -32,15 +34,15 @@ const user = {
      */
     getOneUser: function getOneUser(id, res, next) {
         try {
-            const index = data.findIndex(item => item.id === id);
+            const index = data.findIndex((item) => item.id === id);
 
             if (index === -1) {
-                return res.status(404).send('User not found');
+                return res.status(404).send("User not found");
             }
-    
+
             return res.status(200).json(data[index]);
         } catch (parseErr) {
-            next(parseErr)
+            next(parseErr);
         }
     },
     /**
@@ -53,10 +55,16 @@ const user = {
      * @returns {Object} User object
      */
     updateUser: function updateUser(user, res, next) {
-        const filePath = './data/user.json'
-        const userInfo = user.data
+        const filePath = "./data/user.json";
+        const userInfo = user.data;
 
-        helpers.addToJsonFile(filePath, userInfo, next, user.id)
+        helpers.addToJsonFile(filePath, userInfo, next, user.id);
+        // i riktiga servern tänker jag att det inte är
+        // datat som skickats i requesten som returneras utan
+        // det görs en request till databasen som hämtar datat
+        // som ligger där (för att säkerställa att den har uppdaterats)
+
+        // jag tänker också att user.balance inte är något som kan uppdateras via denna request, utan det kan endast uppdateras i databasen i samband med att en resa slutförs eller en inbetalning/månadsfakturering görs
 
         return res.status(201).json({
             id: user.id,
@@ -64,8 +72,16 @@ const user = {
             cardnr: userInfo.cardnr,
             balance: userInfo.balance,
             active: userInfo.active
-        })
-    }
-}
+        });
+    },
 
-module.exports = user
+    registerUser: function registerUser(req, res, next) {
+        // efterfråga användarens email i denna och registrera
+        // i database, returnera användarens id + token som kan användas
+        // för att komplettera registrering mer cardnr.
+        // Innan cardnr har registrerats kommer tokenets payload att innehålla "role: not_completed" och
+        // då kan inte resor påbörjas tänker jag. När cardnr registreras så byts tokenet ut mot ett som innehåller "role: user".. i tillägg till användarens id.
+    }
+};
+
+export default user;

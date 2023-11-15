@@ -1,7 +1,7 @@
-const express = require('express')
-const bikesModel = require('../../models/bikes.js')
+import express from "express";
+import bikesModel from "../../models/bikes.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -19,8 +19,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/', (req, res, next) => {
-    bikesModel.getAllBikes(res, next)
+router.get("/", (req, res, next) => {
+    bikesModel.getAllBikes(res, next);
 });
 
 /**
@@ -32,10 +32,10 @@ router.get('/', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/:id', (req, res, next) => {
-    const bikeId = req.params.id
+router.get("/:id", (req, res, next) => {
+    const bikeId = req.params.id;
 
-    bikesModel.getOneBike(bikeId, res, next)
+    bikesModel.getOneBike(bikeId, res, next);
 });
 
 /**
@@ -47,13 +47,13 @@ router.get('/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.put('/:id', (req, res, next) => {
+router.put("/:id", (req, res, next) => {
     const bike = {
         id: req.params.id,
         data: req.body.bike
-    }
+    };
 
-    bikesModel.updateBike(bike, res, next)
+    bikesModel.updateBike(bike, res, next);
 });
 
 /**
@@ -65,7 +65,7 @@ router.put('/:id', (req, res, next) => {
  *
  * @returns {Response}
  */
-router.post('/:id/rent', async (req, res, next) => {
+router.post("/:id/rent", async (req, res, next) => {
     /**
      * När rent-routen anropas ska följande hända:
      * Cykelns status ska ändras
@@ -78,13 +78,14 @@ router.post('/:id/rent', async (req, res, next) => {
         // med att göra så i tillägg till att ha idt endast i tokenet)
         // så tänker jag att vi initialt ska satsa på att resan ska registreras
         // på det användaridt som ligger i tokenet. Det ska inte räcka med
-        // att token är giltig utan det måste tillhöra rätt användare också
+        // att token är giltig utan det måste tillhöra rätt användare också.
+        // Sedan tänker jag också att det i tokenet bör kontrolleras att användaren har registrerat kortnummer (tänker role: user respektive role: not_completed)
         token: req.headers['x-access-token'],
         userId: req.body.userId,
         bikeId: req.params.id
-    }
+    };
 
-    const result = await bikesModel.rentBike(rent, res, next)
+    const result = await bikesModel.rentBike(rent, res, next);
 
     return result // frågan är vad som ska returneras // Jag tänker att det bör räcka med reseidt bara? :) /JL
 });
@@ -98,7 +99,7 @@ router.post('/:id/rent', async (req, res, next) => {
  *
  * @returns {Response}
  */
-router.post('/:id/return', async (req, res, next) => {
+router.post("/:id/return", async (req, res, next) => {
     /**
      * När return-routen anropas ska följande hända:
      * Cykelns status ska ändras
@@ -120,11 +121,11 @@ router.post('/:id/return', async (req, res, next) => {
     // Finns det ngn säkerhetsrisk med att inte kontrollera användarens token/id vid återlämning? Att någon går in och "mass-stoppar" en massa resor och orsakar trafikkaos tex :)
     const rent = req.params.tripid;
 
-    const result = await bikesModel.returnBike(rent, res, next)
+    const result = await bikesModel.returnBike(rent, res, next);
 
     // här tänker jag att man returnerar hela resedatat,
     // med starttid, startpunkt, sluttid, slutpunkt, de olika beståndsdelarna i kostnaden samt beräknad totalkostnad
     return result
 });
 
-module.exports = router
+export default router;

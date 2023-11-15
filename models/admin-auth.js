@@ -2,12 +2,15 @@
  * @description Auth model handling registration, login and comparing passwords
  */
 
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET;
-const helpers = require('./helpers.js');
-const filePath = './data/admin.json';
-const nrOfAdmins = require('../data/admin.json').length;
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+import helpers from "./helpers.js";
+import fs from "fs";
+
+const filePath = "./data/admin.json";
+const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+const nrOfAdmins = data.length;
 
 /**
  * Note to self:
@@ -16,14 +19,15 @@ const nrOfAdmins = require('../data/admin.json').length;
  * Fråga: Hur ska middleware för felhantering veta vilken
  * statuskod som ska returneras (4xx eller 5xx)
  * när next(error) anropas?
+ * // Om jag inte tänker fel så kan man kan lägga till en .code attribut till error själv, dvs error.code = "DATABASE_ERROR" eller liknande. Med reservation för att det kanske bara gäller "egenskapade" errors :) /JL
  */
 
 const auth = {
-    checkToken: function(req, res, next) {
-        let token = req.headers['x-access-token'];
+    checkToken: function (req, res, next) {
+        let token = req.headers["x-access-token"];
 
         if (token) {
-            jwt.verify(token, jwtSecret, function(err, decoded) {
+            jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
                 if (err) {
                     return res.status(500).json({
                         errors: {
@@ -51,6 +55,11 @@ const auth = {
 
                 req.user = {};
                 req.user.id = decoded.id;
+                // vad tror ni om att ändra admin till role här
+                // role kan vara vilken typ av anställning som helst
+                // och man kollar då om role är admin i denna request
+                // om all personal ligger i samma tabell
+                // kommer ju servicepersonal att ha role "service" t ex (om vi vill göra koden lite mer generell)
                 req.user.admin = decoded.admin;
                 console.log(req.user);
                 return next();
@@ -92,7 +101,7 @@ const auth = {
                 }
             });
         }
-        bcrypt.hash(password, saltRounds, async function(err, hash) {
+        bcrypt.hash(password, saltRounds, async function (err, hash) {
             if (err) {
                 return res.status(500).json({
                     errors: {
@@ -107,14 +116,14 @@ const auth = {
             helpers.addToJsonFile(
                 filePath,
                 {
-                    "id": `${nrOfAdmins + 1}`,
-                    "access": "what",
-                    "username": username,
-                    "hash": hash,
-                    "active": true
+                    id: `${nrOfAdmins + 1}`,
+                    access: "what",
+                    username: username,
+                    hash: hash,
+                    active: true
                 },
                 next
-            )
+            );
 
             return res.status(201).json({
                 data: {
@@ -148,11 +157,11 @@ const auth = {
             });
         }
 
-        const data = require('../data/admin.json');
-        const index = data.findIndex(item => item.username === username);
+        const data = JSON.parse(fs.readFileSync("./data/admin.json", "utf-8"));
+        const index = data.findIndex((item) => item.username === username);
 
         if (index === -1) {
-            return res.status(404).send('User not found');
+            return res.status(404).send("User not found");
         }
         const hash = data[index].hash;
 
@@ -162,13 +171,9 @@ const auth = {
             password: password,
             hash: hash,
             access: data[index].access
-        }
+        };
 
-        return auth.comparePasswords(
-            res,
-            password,
-            user,
-        );
+        return auth.comparePasswords(res, password, user);
     },
     /**
      * @description Function that compares passwords
@@ -197,7 +202,7 @@ const auth = {
                     id: user.id,
                     admin: user.access
                 };
-                const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: '24h' });
+                const jwtToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "24h" });
 
                 return res.json({
                     data: {
@@ -218,7 +223,7 @@ const auth = {
                 }
             });
         });
-    },
+    }
 };
 
-module.exports = auth
+export default auth;

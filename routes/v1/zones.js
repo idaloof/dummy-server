@@ -1,7 +1,7 @@
-const express = require('express')
-const zonesModel = require('../../models/zones.js')
+import express from "express";
+import zonesModel from "../../models/zones.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Note to self:
@@ -19,8 +19,8 @@ const router = express.Router()
  *
  * @returns {void}
  */
-router.get('/', (req, res, next) => {
-    zonesModel.getAllZones(res, next)
+router.get("/", (req, res, next) => {
+    zonesModel.getAllZones(res, next);
 });
 
 /**
@@ -32,10 +32,10 @@ router.get('/', (req, res, next) => {
  *
  * @returns {void}
  */
-router.get('/:id', (req, res, next) => {
-    const zoneId = req.params.id
+router.get("/:id", (req, res, next) => {
+    const zoneId = req.params.id;
 
-    zonesModel.getOneZone(zoneId, res, next)
+    zonesModel.getOneZone(zoneId, res, next);
 });
 
 /**
@@ -47,8 +47,8 @@ router.get('/:id', (req, res, next) => {
  *
  * @returns {void}
  */
-router.post('/', (req, res, next) => {
-    zonesModel.insertZone(req, res, next)
+router.post("/", (req, res, next) => {
+    zonesModel.insertZone(req, res, next);
 });
 
-module.exports = router
+export default router;

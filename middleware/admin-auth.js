@@ -9,7 +9,7 @@
 //  * @description Function to validate admin token
 //  *
 //  * @param {String} token Admin token
-//  * 
+//  *
 //  * @returns {Boolean}
 //  */
 // function verfiyToken(token) {
@@ -26,8 +26,6 @@
 // }
 
 // Flyttade in denna i auth-modellen :) /J
-
-
 
 // /**
 //  * @description Function to check if admin token is provided
