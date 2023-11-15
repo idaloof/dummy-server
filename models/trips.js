@@ -59,13 +59,18 @@ const trip = {
             id: data.length + 1,
             bike_id: tripData.bikeId,
             user_id: tripData.userId,
-            start_time: new Date().toLocaleString(),
-            end_time: "",
-            start_pos: tripData.geometry,
-            end_pos: "",
-            start_cost: "",
-            var_cost: "",
-            park_cost: ""
+            // dessa 4 värden kan registreras direkt i databasen när resan påbörjas respektive avslutas, positionerna för start respektive slut blir cykelns senaste position från cykeltabellen
+            // start_time: new Date().toLocaleString(),
+            // end_time: "",
+            // start_pos: tripData.geometry,
+            // end_pos: "",
+
+            // dessa 3 registreras via separat metod i samband med resans slut. Start och slutposition
+            // hämtas från databas och kontrollers i koden för vilken zon dessa är i, därefter skickas zon id med i stored procedure som baserat på det
+            // räknar fram start och parkeringskostnad. Samt den variabla kostnaden baserat på starttid och sluttid som redan ligger sparade i samma tabell
+            // start_cost: "",
+            // var_cost: "",
+            // park_cost: ""
         };
 
         const filePath = "./data/trip.json";
