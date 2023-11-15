@@ -73,13 +73,20 @@ router.post('/:id/rent', async (req, res, next) => {
      * Returnera/spara trip_id?
      */
     const rent = {
+        // oavsett om vi skickar med userId via body eller inte
+        // (behöver nog se hur det är tänkt innan jag förstår mervärdet
+        // med att göra så i tillägg till att ha idt endast i tokenet)
+        // så tänker jag att vi initialt ska satsa på att resan ska registreras
+        // på det användaridt som ligger i tokenet. Det ska inte räcka med
+        // att token är giltig utan det måste tillhöra rätt användare också
+        token: req.headers['x-access-token'],
         userId: req.body.userId,
         bikeId: req.params.id
     }
 
     const result = await bikesModel.rentBike(rent, res, next)
 
-    return result // frågan är vad som ska returneras
+    return result // frågan är vad som ska returneras // Jag tänker att det bör räcka med reseidt bara? :) /JL
 });
 
 /**
@@ -102,13 +109,21 @@ router.post('/:id/return', async (req, res, next) => {
      * Var någonstans i flödet ska vi ge rabatter på start- respektive parkeringskostnad?
      * Kundens saldo ändras
      */
-    const rent = {
-        bikeId: req.params.id,
-        tripId: req.body.tripId // via resan kommer vi åt userId
-    }
+    // const rent = {
+    //     bikeId: req.params.id,
+    //     tripId: req.body.tripId // via resan kommer vi åt userId
+    // }
+
+    // Jag tänker att vi bara behöver reseidt, eftersom både userid
+    // och bikeid är redan kopplade till reseidt :)
+    // tänker också att denna kanske passar bättre under trips/ routen?
+    // Finns det ngn säkerhetsrisk med att inte kontrollera användarens token/id vid återlämning? Att någon går in och "mass-stoppar" en massa resor och orsakar trafikkaos tex :)
+    const rent = req.params.tripid;
 
     const result = await bikesModel.returnBike(rent, res, next)
 
+    // här tänker jag att man returnerar hela resedatat,
+    // med starttid, startpunkt, sluttid, slutpunkt, de olika beståndsdelarna i kostnaden samt beräknad totalkostnad
     return result
 });
 
