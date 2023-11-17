@@ -19,6 +19,7 @@ const nrOfAdmins = data.length;
  * Fråga: Hur ska middleware för felhantering veta vilken
  * statuskod som ska returneras (4xx eller 5xx)
  * när next(error) anropas?
+ * // Om jag inte tänker fel så kan man kan lägga till en .code attribut till error själv, dvs error.code = "DATABASE_ERROR" eller liknande. Med reservation för att det kanske bara gäller "egenskapade" errors :) /JL
  */
 
 const auth = {
@@ -54,6 +55,11 @@ const auth = {
 
                 req.user = {};
                 req.user.id = decoded.id;
+                // vad tror ni om att ändra admin till role här
+                // role kan vara vilken typ av anställning som helst
+                // och man kollar då om role är admin i denna request
+                // om all personal ligger i samma tabell
+                // kommer ju servicepersonal att ha role "service" t ex (om vi vill göra koden lite mer generell)
                 req.user.admin = decoded.admin;
                 console.log(req.user);
                 return next();

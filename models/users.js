@@ -59,6 +59,12 @@ const user = {
         const userInfo = user.data;
 
         helpers.addToJsonFile(filePath, userInfo, next, user.id);
+        // i riktiga servern tänker jag att det inte är
+        // datat som skickats i requesten som returneras utan
+        // det görs en request till databasen som hämtar datat
+        // som ligger där (för att säkerställa att den har uppdaterats)
+
+        // jag tänker också att user.balance inte är något som kan uppdateras via denna request, utan det kan endast uppdateras i databasen i samband med att en resa slutförs eller en inbetalning/månadsfakturering görs
 
         return res.status(201).json({
             id: user.id,
@@ -67,6 +73,14 @@ const user = {
             balance: userInfo.balance,
             active: userInfo.active
         });
+    },
+
+    registerUser: function registerUser(req, res, next) {
+        // efterfråga användarens email i denna och registrera
+        // i database, returnera användarens id + token som kan användas
+        // för att komplettera registrering mer cardnr.
+        // Innan cardnr har registrerats kommer tokenets payload att innehålla "role: not_completed" och
+        // då kan inte resor påbörjas tänker jag. När cardnr registreras så byts tokenet ut mot ett som innehåller "role: user".. i tillägg till användarens id.
     }
 };
 

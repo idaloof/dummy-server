@@ -89,7 +89,9 @@ const bike = {
         const trip = {
             bikeId: rent.bikeId,
             userId: rent.userId,
-            geometry: bike.geometry
+            // om vi använder MariaDB tänker jag att det räcker med att skicka in bikeid och userid i en stored procedure,
+            // geometry kan hämta från bike-tabellen direkt i databasen
+            // geometry: bike.geometry
         };
 
         tripsModel.insertTrip(trip, res, next);
